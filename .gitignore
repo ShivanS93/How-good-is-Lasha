@@ -143,7 +143,6 @@ cython_debug/
 *.swo
 
 # custom
-*.jpeg
 *.hd5
 *.hdf
 /results
