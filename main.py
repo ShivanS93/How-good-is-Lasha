@@ -5,7 +5,7 @@ import pandas as pd
 import streamlit as st
 import altair as alt
 
-st.image('./lasha.jpeg', caption='Lasha Lifting in Tokyo 2020. Image source from Infobae')
+st.image('lasha.jpeg', caption='Lasha Lifting in Tokyo 2020. Image source from Infobae')
 
 """
 # How Good Is Lasha?
