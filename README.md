@@ -7,7 +7,7 @@
 
 Lasha Talakhadze recent performance in the Tokyo 2020 Olympics was an mind blowing display of strength.
 
-Here lies the insipiration for this project. How good is Lasha? Is there a way to display this graphically?
+Here lies the inspiration for this project. How good is Lasha? Is there a way to display this graphically?
 
 ## Jupyter Notebook
 
@@ -28,3 +28,9 @@ This takes the `results_all.pkl` file and displays it in an interactive graph ho
 ```bash
 pipenv run streamlit run main.py
 ```
+
+## How this is hosted
+
+[The project is live on here](https://lasha.shivan.xyz).
+
+I use ansible to set up my nginx and to load the code onto the server. This is run inside a docker container. [Here is the ansible code](https://github.com/shivans93/ansible).

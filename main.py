@@ -12,7 +12,7 @@ st.image('lasha.jpeg', caption='Lasha Lifting in Tokyo 2020. Image source from I
 
 The graph below shows all the z-scores of the lifters in the Tokyo 2020 Olympics.
 
-The z-score is calculated using the difference between the individual's total and the mean total of all lifters in the individual's weight class divided by the standard deviation of the totals.
+The z-score is calculated using the difference between the individual's total and the mean total of all lifters in the individual's weight class divided by the standard deviation of these totals.
 
 Calculating z-score:
 """
@@ -24,7 +24,7 @@ st.latex(r'''
 """
 The colour represents the lifter's ranking within the weight category.
 
-The y-axis is the lifter's placing in their weight category.
+The y-axis is the lifter's ranking in their weight category.
 """
 df = pd.read_pickle('results_all.pkl')
 
@@ -39,8 +39,8 @@ else:
 
 df = df[df['Category'].isin(selected_categories)]
 
-c = alt.Chart(df, title="Z-scores for Tokyo 2020 lifters").mark_circle().encode(
-    y=alt.Y('Rank:Q', title='Placing', scale=alt.Scale(reverse=True)),
+c = alt.Chart(df, title="Z-scores of totals for Tokyo 2020 Olympic Lifters").mark_circle().encode(
+    y=alt.Y('Rank:Q', title='Ranking', scale=alt.Scale(reverse=True)),
     x=alt.X('Normalised:Q', title='Z-score'),
     color=alt.Color('Rank:Q', legend=None, scale=alt.Scale(scheme='lightmulti')),
     tooltip=['Name:N', 'Date of Birth:N', 'Rank:Q', 'Category:N', 'Country:N', 'Final Total:Q'],
@@ -50,3 +50,16 @@ c = alt.Chart(df, title="Z-scores for Tokyo 2020 lifters").mark_circle().encode(
         stroke=None
     )
 st.altair_chart(c, use_container_width=True)
+
+
+"""
+
+## Feedback
+
+This was made by Shivan Sivakumaran.
+
+[Here is the code](https://github.com/shivans93/How-good-is-lasha)
+
+I'm happy for any feedback. Hope you enjoy this and cheers!
+
+"""
