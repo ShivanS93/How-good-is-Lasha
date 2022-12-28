@@ -66,7 +66,7 @@ st.altair_chart(c, use_container_width=True)
 
 ## Feedback
 
-This was made by Shivan Sivakumaran.
+This was made by [Shivan Sivakumaran](https://shivan.xyz).
 
 [Here is the code](https://github.com/shivan-s/lasha-tokyo-2020)
 
