@@ -1,6 +1,6 @@
 [server]
-port = 8998
+port = 8000
 headless = true
 [browser]
 serverAddress = "0.0.0.0"
-serverPort = 8998
+serverPort = 8000

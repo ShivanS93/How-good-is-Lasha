@@ -1,26 +1,19 @@
-FROM python:3.8-slim
+FROM python:3.11-slim
 
-ARG YOUR_ENV
-ENV YOUR_ENV=${YOUR_ENV} \
-	PYTHONDONTWRITEBYTECODE=1\
-	PYTHONUNBUFFERED=1 \
-	PYTHONHASHSEED=random \
-	PIP_NO_CACHE_DIR=off \
-	PIP_DISABLE_PIP_VERSION_CHECK=on \
-	PIP_DEFAULT_TIMEOUT=100 \
-	STREAMLIT_SERVER_PORT=8998
+ENV PYTHONDONTWRITEBYTECODE 1
+ENV PYTHONUNBUFFERED 1
 
-RUN pip install pipenv
-COPY Pipfile Pipfile.lock /tmp/
-RUN cd /tmp && pipenv lock --requirements > requirements.txt
-RUN pip install -r /tmp/requirements.txt
+WORKDIR /code
 
-COPY ./.streamlit .
+# install pip-tools and pip
+# hadolint ignore=DL3013
+RUN pip install --no-cache-dir -U pip-tools pip
+COPY requirements.in .
 
-COPY . /usr/src/
+# install python dependences
+# hadolint ignore=DL3042
+RUN pip-compile -o requirements.txt requirements.in && \
+  pip install --no-cache-dir --no-deps -r requirements.txt
 
-WORKDIR /usr/src/
-
-RUN chmod a+rx setup.sh
-
-ENTRYPOINT [ "sh", "-c", "./setup.sh" ]
+COPY . .
+ENTRYPOINT ["sh", "-c", "/code/docker-entrypoint.sh"]

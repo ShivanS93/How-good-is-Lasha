@@ -1,0 +1,21 @@
+---
+version: "3.9"
+
+name: lasha
+
+services:
+  app:
+    container_name: lasha
+    image: lasha:latest
+    build:
+      context: .
+      dockerfile: Dockerfile
+    env_file:
+      - .env
+    volumes:
+      - .:/code/
+    restart: unless-stopped
+    ports:
+      - "${APP_PORT:-8000}:8000"
+    expose:
+      - 8000
