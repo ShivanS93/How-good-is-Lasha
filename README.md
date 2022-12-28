@@ -26,11 +26,10 @@ Unfortunately, the jupyter notebook uses my conda environment which has a jumble
 This takes the `results_all.pkl` file and displays it in an interactive graph hosted using `streamlit`. The `Pipfile` should contain the dependences to run the streamlit application.
 
 ```bash
-pipenv run streamlit run main.py
+make run # requires make, docker etc
 ```
 
 ## How this is hosted
 
-[The project is live on here](https://lasha.shivan.xyz).
+[The project is live on here](https://lasha.app.shivan.xyz).
 
-I use ansible to set up my nginx and to load the code onto the server. This is run inside a docker container. [Here is the ansible code](https://github.com/shivans93/ansible).
